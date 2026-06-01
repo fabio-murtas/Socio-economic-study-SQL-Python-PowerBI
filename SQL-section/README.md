@@ -11,7 +11,6 @@ This project uses **Python** to generate a **SQL database** file, pulling data f
 | World Bank | https://www.worldbank.org/ |
 | Our World in Data | https://ourworldindata.org/ |
 | Clio Infra | https://clio-infra.eu/ |
-| Maddison Project Database 2023 | https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2023 |
 
 The dataset covers several socio-economic metrics related to world population, energy consumption, and other parameters.
 
