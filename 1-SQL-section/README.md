@@ -362,7 +362,7 @@ ORDER BY year;
 **`rolling_3yr_avg_consumption`**
 Smoothes short-term volatility for trend identification. Useful for detecting structural breaks in consumption patterns. Only reflects the most recent 3-year window, making it less sensitive to distant historical values.
 
-**`yoy_change_percentage_pct`**
+**`yoy_energy_change_pct`**
 Highlights periods of growth or decline year by year. The first row will always return `NULL` due to the LAG limitation. Large percentage swings may indicate policy changes or measurement issues.
 
 **`cumulative_change_from_baseline`**
