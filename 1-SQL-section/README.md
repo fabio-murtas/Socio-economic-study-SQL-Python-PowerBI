@@ -51,15 +51,15 @@ import os
 from pathlib import Path
 
 # Use environment variable 'HOME' first, then fallback to system home directory.
-# This ensures the script works on different user profiles without hardcoding paths.
+# This ensures the script works on different user profiles without hardcoding paths (paths could be different on your local machine).
 home = os.environ['HOME'] or Path.home()
 
 # Define absolute file paths using Path objects for cross-platform compatibility
-gdp_capita    = Path(home) / 'Dropbox' / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'gdp-per-capita-worldbank' / 'gdp-per-capita-worldbank.csv'
-energy_capita = Path(home) / 'Dropbox' / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'per-capita-energy-use-owid' / 'per-capita-energy-use.csv'
-population    = Path(home) / 'Dropbox' / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'population-by-country-owid' / 'population.csv'
-realwages     = Path(home) / 'Dropbox' / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'LabourersRealWage_Broad-clioinfra.xlsx'
-db_file       = Path(home) / 'Dropbox' / 'Projects' / 'Portfolio' / 'Socio-Economic study' / 'SQL' / 'social-data-gen.db'
+gdp_capita    = Path(home) / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'gdp-per-capita-worldbank' / 'gdp-per-capita-worldbank.csv'
+energy_capita = Path(home) / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'per-capita-energy-use-owid' / 'per-capita-energy-use.csv'
+population    = Path(home) / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'population-by-country-owid' / 'population.csv'
+realwages     = Path(home) / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'LabourersRealWage_Broad-clioinfra.xlsx'
+db_file       = Path(home) / 'Projects' / 'Portfolio' / 'Socio-Economic study' / 'SQL' / 'social-data-gen.db'
 
 conn = None
 
@@ -264,7 +264,7 @@ This section demonstrates **SQLite Window Functions** applied to Italy's energy 
 | # | Column | Window Type | Use Case |
 |---|--------|-------------|----------|
 | 1 | `rolling_3yr_avg_consumption` | Sliding window (3 rows) | Short-term trend smoothing |
-| 2 | `yoy_change_percentage_pct` | LAG function | Year-over-year growth/decline |
+| 2 | `yoy_energy_change_pct` | LAG function | Year-over-year growth/decline |
 | 3 | `cumulative_change_from_baseline` | FIRST_VALUE (static reference) | Change from baseline year |
 | 4 | `running_avg_consumption` | Cumulative window | How average evolves over time |
 
