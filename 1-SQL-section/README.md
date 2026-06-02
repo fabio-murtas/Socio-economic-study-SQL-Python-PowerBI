@@ -323,7 +323,7 @@ SELECT
             ) * 100,
             2
         )
-    END AS yoy_change_percentage_pct,
+    END AS yoy_energy_change_pct,
     
     -- ==================== METRIC 3: CUMULATIVE CHANGE FROM BASELINE ====================
     -- Window Type: First Value Function (Static Reference)
