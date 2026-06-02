@@ -16,11 +16,11 @@ from pathlib import Path
 home = os.environ['HOME'] or Path.home()
 
 # Define absolute file paths using Path objects for cross-platform compatibility
-gdp_capita = Path(home) / 'Dropbox' / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'gdp-per-capita-worldbank' / 'gdp-per-capita-worldbank.csv'
-energy_capita = Path(home) / 'Dropbox' / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'per-capita-energy-use-owid' / 'per-capita-energy-use.csv'
-population = Path(home) / 'Dropbox' / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'population-by-country-owid' / 'population.csv'
-realwages = Path(home) / 'Dropbox' / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'LabourersRealWage_Broad-clioinfra.xlsx'
-db_file = Path(home) / 'Dropbox' / 'Projects' / 'Portfolio' / 'Socio-Economic study' / 'SQL' / 'social-data-gen.db'
+gdp_capita = Path(home) / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'gdp-per-capita-worldbank' / 'gdp-per-capita-worldbank.csv'
+energy_capita = Path(home) / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'per-capita-energy-use-owid' / 'per-capita-energy-use.csv'
+population = Path(home) / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'population-by-country-owid' / 'population.csv'
+realwages = Path(home) / 'Projects' / 'Portfolio' / 'Socio-Economic study' / '_data' / 'LabourersRealWage_Broad-clioinfra.xlsx'
+db_file = Path(home) / 'Projects' / 'Portfolio' / 'Socio-Economic study' / 'SQL' / 'databases' / 'social-data-gen.db'
 
 # Initialize the connection to database variable before use
 conn = None

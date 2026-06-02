@@ -25,6 +25,7 @@ pacman -Syu python-pandas python-openpyxl python-psycopg2
 
 > **Note:** `sqlite3` is built into Python — no extra package needed.  
 > **Note:** `openpyxl` is optional but recommended for `.xlsx` support.
+> **Note:** python scripts point at local paths for csv and xlsx, you might need to edit the script to match your $HOME path
 
 ---
 
@@ -254,4 +255,132 @@ ORDER BY per_capita_energy_consumption DESC;
 
 ---
 
-> A deeper statistical analysis is covered in the Python and Power BI sections of this portfolio project.
+## SQL — Window Functions Analysis
+
+This section demonstrates **SQLite Window Functions** applied to Italy's energy consumption data (from 1999 onward), producing four analytical metrics in a single query.
+
+### Output Columns
+
+| # | Column | Window Type | Use Case |
+|---|--------|-------------|----------|
+| 1 | `rolling_3yr_avg_consumption` | Sliding window (3 rows) | Short-term trend smoothing |
+| 2 | `yoy_change_percentage_pct` | LAG function | Year-over-year growth/decline |
+| 3 | `cumulative_change_from_baseline` | FIRST_VALUE (static reference) | Change from baseline year |
+| 4 | `running_avg_consumption` | Cumulative window | How average evolves over time |
+
+> **SQLite requirement:** version >= 3.25.0 for `OVER` clause support.
+
+---
+
+### Query
+
+```sql
+-- ============================================================
+-- Energy Consumption & Economic Trend Analysis
+-- OUTPUT COLUMNS: 
+--   1. Rolling 3-Year Average (Sliding Window)
+--   2. Year-Over-Year Change (%)
+--   3. Cumulative Change from Baseline (First Value Method)
+--   4. Running Average Consumption (Cumulative Window)
+-- ============================================================
+
+SELECT 
+
+    -- Base year identifier for longitudinal analysis
+    year,
+    
+    -- Original per-capita energy consumption (input metric)
+    per_capita_energy_consumption,
+    
+    -- Per-capita GDP as economic control variable
+    gdp_per_capita,
+    
+    -- ==================== METRIC 1: 3-YEAR ROLLING AVERAGE ====================
+    -- Window Type: Sliding Window (Rows Between 2 Preceding And Current Row)
+    -- Use Case: Short-term trend smoothing for volatility reduction
+    ROUND(
+        AVG(per_capita_energy_consumption) OVER (
+            PARTITION BY country 
+            ORDER BY year 
+            ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+        ),
+        2
+    ) AS rolling_3yr_avg_consumption,
+    
+    -- ==================== METRIC 2: YEAR-OVER-YEAR CHANGE (%) ====================
+    -- Window Type: LAG Function (Single Row Preceding)
+    -- Use Case: Calculate YoY percentage change for growth/decline analysis
+    CASE 
+        WHEN LAG(per_capita_energy_consumption) OVER (ORDER BY year) IS NULL 
+            THEN NULL 
+        ELSE ROUND(
+            (
+                per_capita_energy_consumption - 
+                LAG(per_capita_energy_consumption) OVER (ORDER BY year)
+            ) /
+            NULLIF(
+                LAG(per_capita_energy_consumption) OVER (ORDER BY year), 0
+            ) * 100,
+            2
+        )
+    END AS yoy_change_percentage_pct,
+    
+    -- ==================== METRIC 3: CUMULATIVE CHANGE FROM BASELINE ====================
+    -- Window Type: First Value Function (Static Reference)
+    -- Use Case: Calculate absolute decline/growth from first recorded year
+    ROUND(
+        per_capita_energy_consumption -
+        FIRST_VALUE(per_capita_energy_consumption) OVER (ORDER BY year ROWS UNBOUNDED PRECEDING),
+        2
+    ) AS cumulative_change_from_baseline,
+    
+    -- ==================== METRIC 4: RUNNING AVERAGE CONSUMPTION ====================
+    -- Window Type: Running/Cumulative Average
+    -- Use Case: Track how average consumption evolves over time
+    -- Note: This differs from rolling window (includes all historical data)
+    ROUND(
+        AVG(per_capita_energy_consumption) OVER (
+            ORDER BY year 
+            ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+        ),
+        2
+    ) AS running_avg_consumption
+
+FROM SUMMARY_TABLE
+
+WHERE 
+    country = 'italy' AND
+    year >= 1999
+
+ORDER BY year;
+```
+
+---
+
+### Interpretation Notes
+
+**`rolling_3yr_avg_consumption`**
+Smoothes short-term volatility for trend identification. Useful for detecting structural breaks in consumption patterns. Only reflects the most recent 3-year window, making it less sensitive to distant historical values.
+
+**`yoy_change_percentage_pct`**
+Highlights periods of growth or decline year by year. The first row will always return `NULL` due to the LAG limitation. Large percentage swings may indicate policy changes or measurement issues.
+
+**`cumulative_change_from_baseline`**
+Measures total improvement or decline from the starting point (1999). Useful for tracking long-term sustainability goals — a negative value means consumption has fallen since the baseline year.
+
+**`running_avg_consumption`**
+Shows how the historical average evolves over time. Unlike the rolling window, this includes all data from the start, making it more responsive to the latest values and useful for identifying permanent shifts in consumption behaviour.
+
+---
+
+### Rolling vs Running Window — Key Difference
+
+| | Rolling (3-year) | Running (cumulative) |
+|---|---|---|
+| **Data included** | Last 3 years only | All years from start |
+| **Noise sensitivity** | Lower | Higher |
+| **Best for** | Recent trend snapshot | Long-term behavioural shifts |
+
+![Italy window functions results](assets/italy_window_functions.png)
+
+By looking at this table we can begin gathering ideas for hypothesis testing. For example, even without running a test we can see at a glance that GDP per capita is not positively correlated with energy consumption but also that is not negatively correlated, hence, the table shows no direct correlation between the two metrics.
