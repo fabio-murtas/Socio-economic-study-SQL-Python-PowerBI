@@ -253,7 +253,7 @@ def plot_multi_metric_time_series(df: pd.DataFrame) -> None:
     ax1.plot(
         yearly["year"], yearly["daily_true_wage"],
         marker="s", linestyle="--", linewidth=2, alpha=0.8,
-        label="True Daily Wage (€)", color="#2ca02c",
+        label="True Daily Wage", color="#2ca02c",
     )
 
     # Per-capita energy consumption – dash-dot style, secondary right-hand axis
