@@ -102,7 +102,7 @@ def load_and_clean_data(conn: sqlite3.Connection) -> Optional[pd.DataFrame]:
         population                 ÷ 1,000,000  → expressed in Millions
         per_capita_energy_consumption ÷ 1,000   → expressed in Thousands (kWh-equivalent)
 
-    daily_true_wage is left in its original units (inflation-adjusted daily euros).
+    daily_true_wage is left in its original units (inflation-adjusted).
 
     Parameters
     ----------
