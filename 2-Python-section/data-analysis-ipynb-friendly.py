@@ -40,7 +40,7 @@ from scipy.stats import linregress, pearsonr, spearmanr
 # and do not affect the correctness of this analysis.
 warnings.filterwarnings("ignore", category=FutureWarning)
 
-# seaborn-v0_8-deep gives clean, colour-blind-friendly palette for multi-line plots
+# seaborn-v0_8-deep gives clean palette for multi-line plots
 plt.style.use("seaborn-v0_8-deep")
 
 
