@@ -1,5 +1,8 @@
 # Socio-Economic Study — SQL Data Pipeline
 
+> This is **Part 1** of a three-part data project.
+> | **Part 1 — SQL** | [Part 2 — SQL](../2-SQL-section/README.md) | [Part 3 — Power BI](../3-PowerBI-section/README.md) |
+
 ## Project Overview
 
 This project uses **Python** to generate a **SQL database** file, pulling data from different local sources (CSV, XLSX), and then uses SQL to clean the dataset and generate a joint table containing all relevant information. The analysis showcases **sorting**, **filtering**, and **SQLite Window Functions**.
