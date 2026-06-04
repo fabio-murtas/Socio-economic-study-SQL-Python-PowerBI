@@ -1,7 +1,7 @@
 # Socio-Economic Study — SQL Data Pipeline
 
 > This is **Part 1** of a three-part data project.
-> | **Part 1 — SQL** | [Part 2 — SQL](../2-SQL-section/README.md) | [Part 3 — Power BI](../3-PowerBI-section/README.md) |
+> | **Part 1 — SQL** | [Part 2 — Python](../2-SQL-section/README.md) | [Part 3 — Power BI](../3-PowerBI-section/README.md) |
 
 ## Project Overview
 
