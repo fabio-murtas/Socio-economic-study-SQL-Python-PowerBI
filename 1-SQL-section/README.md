@@ -387,3 +387,5 @@ Shows how the historical average evolves over time. Unlike the rolling window, t
 ![Italy window functions results](assets/italy_window_functions.png)
 
 By looking at this table we can begin gathering ideas for hypothesis testing. For example, even without running a test we can see at a glance that GDP per capita is not positively correlated with energy consumption but also that is not negatively correlated, hence, the table shows no direct correlation between the two metrics.
+
+> **Next:** [Part 2 — Python](../2-Python-section/README.md)
