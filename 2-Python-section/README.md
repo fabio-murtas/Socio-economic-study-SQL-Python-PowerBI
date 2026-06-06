@@ -205,6 +205,11 @@ What makes the UK null result particularly notable is that it holds even though 
 
 Taken together, these four results suggest that the energy-wage relationship is not a universal feature of industrial economies. It appears to be a **contingent historical outcome** — present when certain institutional conditions hold, absent when those conditions are altered. Italy and Finland retained those conditions through the period studied. The US and UK did not.
 
+Results shows that US r = 0.299 (non-significant) and the UK shows r = 0.231 (non-significant) is statistically robust. However, the interpretation deserves a deeper observation.
+Energy Efficiency: Post-industrial economies use energy more efficiently per unit of output. The UK's energy consumption fell 12-15% in the 1980s-90s despite GDP growth (deindustrialization + efficiency).
+Offshoring: Manufacturing-heavy economies like Italy and Finland still captured industrial energy in their borders. The US and UK outsourced production to China. Their energy is "hidden" in imports.
+Sector Mix: Italy's strong manufacturing = more direct energy. UK/US financial services = less direct energy per unit output. This confounds the wage relationship.
+
 The statistics are precise about the *what*. The *why* remains an open and genuinely fascinating question that the data can point toward but not resolve — and that is precisely where the next section of this project picks up.
 
 > ⚠️ *Correlation does not imply causation. Both wages and energy consumption may be jointly driven by broader economic development, technological change, and structural factors not captured in this model.*
