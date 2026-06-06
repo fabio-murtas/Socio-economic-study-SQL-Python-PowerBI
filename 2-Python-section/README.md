@@ -53,7 +53,7 @@ Data is queried directly from the SQLite database generated in Part 1 — no raw
 |--------|---------|
 | `country = 'italy'` | Case study focus |
 | `year >= 1965` | Pre-1965 data is sparse and incomplete |
-| `year != 2001` | Confirmed data-entry anomaly in source |
+| `year != 2001` | Confirmed data-entry anomaly (Italy daily true wage is showing an absurd value of 0.06, clearly an issue) |
 | `daily_true_wage IS NOT NULL` | Drops incomplete records |
 
 **Normalisation applied:**
