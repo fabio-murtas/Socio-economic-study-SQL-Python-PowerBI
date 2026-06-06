@@ -128,17 +128,7 @@ p-value   — significance of the regression at α = 0.05
 
 ## How to Run
 
-```bash
-# 1. Make sure the database from Part 1 is accessible
-#    Default expected path: 02-social-study-joins.db (project root)
-
-# 2. Launch JupyterLab from the project root
-cd path/to/project
-jupyter lab
-
-# 3. Open italy-analysis.ipynb and run all cells
-#    Kernel → Restart & Run All
-```
+Simply click on the [jupyter notebook](../2-Python-section/data-analysis-oneblock.ipynb) file in this section
 
 ---
 
