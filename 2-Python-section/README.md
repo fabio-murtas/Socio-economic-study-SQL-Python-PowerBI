@@ -142,14 +142,15 @@ jupyter lab
 
 ---
 
-## Results discussion
+### Statistcs discussion
 
-**Pearson correlation analysis** revealed a very strong positive relationship between per-capita energy consumption and daily real wages *(r = 0.897, p < 0.001)*. The coefficient of determination *(R² = 0.805)* indicates that approximately 80% of wage variation is associated with changes in energy consumption. **Spearman rank correlation** produced a similar result *(ρ = 0.875, p < 0.001)*, confirming that the relationship remains strong even when evaluated using ranked data. The similarity between Pearson and Spearman coefficients suggests a stable and approximately linear association between the two variables.
+### Italy — r = 0.897, ρ = 0.875, R² = 0.805
 
-**Linear regression analysis** revealed a strong positive relationship between per-capita energy consumption and daily real wages in Italy between 1965 and 2008. The model produced a correlation coefficient of *R = 0.897* and an *R² of 0.805*, indicating that approximately 80% of wage variation is associated with changes in energy consumption. The relationship was highly statistically significant *(p < 0.001)*, suggesting that periods of higher energy consumption were strongly associated with higher real wages.
+This is an exceptionally strong result by any standard in social science, where r values above 0.7 are already considered strong. Italy's Pearson and Spearman coefficients are close to each other — 0.897 vs 0.875 — which is statistically meaningful. When Pearson and Spearman agree this closely, it tells you the relationship is not only strong but **well-behaved**: it is approximately linear, it is not being inflated by a handful of extreme values, and it holds across the full rank order of the data, not just in the middle of the distribution.
 
-*Over the period 1965–2008 in Italy, increases in per-capita energy consumption were strongly associated with increases in real wages. This finding is consistent with economic theories linking greater energy availability to higher productivity, industrial output, and living standards.*
-*Correlation does not establish causation; both variables may be influenced by broader economic development, technological progress, and structural changes in the economy. (As we will see in the next section)*
+The **R² of 0.805** deserves particular attention. It means that approximately **80% of the variation in Italian real wages over this period can be statistically accounted for by variation in per-capita energy consumption**. In a complex social system with hundreds of potential drivers — monetary policy, trade cycles, demographic shifts, government spending — one variable explaining 80% of another is a remarkable degree of association. It does not prove causation, but it proves that these two things moved together so consistently that separating them statistically is almost impossible.
+
+The OLS intercept of **-108.24** is also worth noting. It means that at zero energy consumption, the model predicts wages to be negative — which is economically nonsensical, but statistically it tells you the relationship only holds above a certain energy threshold. Italy's economy needed to reach a minimum level of industrial energy use before wages began responding. Below that level, the linear model breaks down. This is consistent with what economists call a **development threshold effect**.
 
 ---
 
@@ -168,28 +169,54 @@ jupyter lab
 
 ### Analysis & Discussion
 
-The results reveal a striking divide between the four countries, splitting cleanly into two groups: those where wages and energy consumption are strongly and significantly coupled (**Italy** and **Finland**), and those where the relationship has effectively broken down (**United States** and **United Kingdom**).
+### The first thing that jumps out is the split
+
+Two countries return highly significant correlations with p-values that round to zero — **Italy** and **Finland**. Two countries return non-significant results with p-values well above any conventional threshold — the **US** and **UK**. This is not a gradual spectrum. It is a clean binary, and that binary is itself the finding. Something structurally different is happening between these two pairs, and the statistics are telling you to look for it.
 
 ---
 
-**Italy** presents the strongest and most consistent signal in the dataset. A Pearson correlation of *r = 0.897* indicates a near-linear positive relationship between per-capita energy consumption and daily real wages, with *R² = 0.805* meaning that approximately **80% of the variation in wages is associated with variation in energy consumption**. Both Pearson and Spearman coefficients are in close agreement *(ρ = 0.875)*, which confirms the relationship is stable and not driven by outliers or non-linearity. The OLS slope of *6.01* tells us that each unit increase in per-capita energy consumption was associated with a 6-unit increase in daily real wages over this period. This is consistent with Italy's postwar economic trajectory — a manufacturing and export-driven economy where industrial energy use and worker prosperity moved in lockstep through the *miracolo economico* and its aftermath.
+### Finland — r = 0.806, ρ = 0.893, R² = 0.649
+
+Finland presents the most intellectually interesting result in the dataset, and the reason is the inversion: **Spearman exceeds Pearson**. In Italy they were nearly equal. Here, ρ = 0.893 is meaningfully higher than r = 0.806. This gap is a diagnostic signal.
+
+When Spearman substantially exceeds Pearson, it indicates that the relationship is **monotonic but non-linear** — the two variables consistently move in the same direction, but not at a constant rate. In Finland's case this makes structural sense. The Finnish economy has periods of rapid energy expansion where wages responded slowly, and periods where wages caught up in steps. The rank ordering is preserved — more energy always eventually means more wages — but the proportionality is not constant throughout.
+
+The R² of 0.649 is lower than Italy's 0.805, but this is not simply a weaker relationship. It is partly a consequence of the non-linearity: Pearson's R² measures how well a straight line fits the data, and if the true relationship is curved, R² will underestimate the actual degree of association. The Spearman coefficient, which does not assume linearity, is actually *higher* for Finland than for Italy. Taken together, the two statistics suggest Finland's energy-wage relationship is **stronger in direction but more complex in form** than Italy's.
+
+The OLS **slope of 2.41** versus Italy's **6.01** is striking. Finland requires more than twice as much energy input per unit of wage gain compared to Italy. This reflects the nature of Finland's dominant industries — paper, pulp, heavy manufacturing, and cold-climate infrastructure — which are energy-intensive by necessity. The economy consumes energy heavily as a structural baseline before that energy translates into worker compensation. Italy's manufacturing base was comparatively more labour-intensive relative to its energy use, hence the steeper wage response per energy unit.
 
 ---
 
-**Finland** also shows a strong and statistically significant coupling, though with some notable differences from Italy. The Pearson coefficient *(r = 0.806, R² = 0.649)* is slightly lower, but the Spearman rank correlation is actually the highest in the dataset *(ρ = 0.893)* — higher even than Italy's. This divergence between Pearson and Spearman is informative: it suggests the relationship in Finland is **strongly monotonic but not perfectly linear**, meaning wages and energy consumption moved consistently in the same direction without following a strict proportional ratio throughout. The OLS slope of *2.41* is notably lower than Italy's, indicating a shallower wage response per unit of energy — consistent with Finland's energy-intensive industrial base (paper, pulp, heavy manufacturing) which requires large energy inputs relative to the wage gains they generate.
+### United States — r = 0.299, ρ = 0.114, p = 0.091 / 0.526
+
+These are near-zero results, and the gap between Pearson and Spearman is as diagnostically important as the gap was for Finland — but in the opposite direction.
+
+Pearson r = 0.299 is weak but at least approaches marginal significance at p = 0.091. Spearman ρ = 0.114 is essentially zero and wildly non-significant at p = 0.526. When Pearson exceeds Spearman by this margin, it typically means that what little linear signal exists is being **driven by a small number of influential data points** — likely the earlier years in the dataset when the US wage-energy relationship still retained some of its postwar character — while the rank-order relationship across the full dataset is essentially random noise.
+
+The **R² of 0.089** means energy consumption explains less than **9% of wage variation**. The remaining 91% is determined by other factors entirely. The OLS slope of 1.644, while positive, is statistically meaningless given the non-significant p-value — the model has no predictive power. The positive intercept of 38.09 is the only case in the dataset where the intercept is positive and substantial, which means the model is essentially saying wages exist **independently** of energy consumption at a baseline level. In economic terms: US wages are set by other mechanisms entirely.
+
+The question this raises — and which the statistics cannot answer — is *why*. What changed in the US that severed a relationship that was presumably present during the postwar industrial era? The statistics identify the break. They do not explain it. That explanation will need to come from somewhere else.
 
 ---
 
-**The United States** is the most analytically interesting case precisely because of how weak the results are. A Pearson *r = 0.299* and Spearman *ρ = 0.114* — the latter barely above zero — with p-values of *0.091* and *0.526* respectively mean there is **no statistically meaningful relationship** between energy consumption and wages in this dataset. The *R² of 0.089* indicates that energy consumption explains less than 9% of wage variation. This is not a data quality issue — it is a historically grounded finding. The US economy underwent a fundamental structural shift from the 1970s onward: energy consumption remained high (the economy stayed large and industrially active), but wages stagnated in real terms due to declining union density, the offshoring of manufacturing, and the growing share of returns flowing to capital rather than labour. Energy and wages decoupled because the mechanisms that once linked them — collective bargaining, shared industrial productivity gains — were progressively dismantled.
+### United Kingdom — r = 0.231, ρ = 0.232, p = 0.189 / 0.186
 
----
+The UK results are in some ways the cleanest null finding in the dataset. Unlike the US where Pearson and Spearman diverged, here they are nearly identical: 0.231 vs 0.232. This means the absence of relationship is **consistent across both linear and rank-order tests**. There are no hidden outliers inflating one measure. There is simply no signal, detected the same way by both methods.
 
-**The United Kingdom** mirrors the United States in statistical terms, with equally weak and non-significant results *(r = 0.231, R² = 0.053, p = 0.189)*. Despite having the highest OLS slope in the dataset *(6.74)*, this value carries no statistical weight given the non-significant p-value — the slope is an artefact of a poorly fitting model, not a meaningful signal. The UK's deindustrialisation from the 1980s onward — earlier and more abrupt than most Western European peers — severed the link between industrial energy use and worker wages. By the time the UK economy recovered in the 1990s, growth was concentrated in financial services and London's knowledge economy, sectors where the energy-wage relationship that characterised the industrial era simply does not apply.
+The **R² of 0.053** — just 5.3% — is the lowest in the dataset. Energy consumption is essentially orthogonal to wages in the UK over this period. They share almost no statistical variance.
+
+The OLS slope of **6.74** is paradoxically the highest in the entire dataset — higher than Italy's 6.01 — yet it is the most meaningless number in the results. A high slope in a non-significant regression with R² = 0.053 is a mathematical artefact: the line is steep because it is being fitted to data with no real linear structure, so small changes in the noise produce large swings in the slope estimate. The negative intercept of -202.83 compounds this — the most extreme in the dataset — reflecting a poorly constrained model, not a real economic threshold.
+
+What makes the UK null result particularly notable is that it holds even though the UK and Italy are similar in population, geographic scale, and European context. They were both postwar industrial economies that rebuilt through the 1950s and 60s. The fact that Italy returns **r = 0.897** and the UK returns **r = 0.231** for the same variable pair, over an overlapping time period, is one of the sharpest comparative findings in the entire analysis. Something happened in one country that did not happen in the other, restructuring the statistical relationship between energy consumption and worker compensation completely.
 
 ---
 
 ### Key Takeaway
 
-The contrast between these four countries is not random. It maps precisely onto their economic histories. **Countries that retained a manufacturing and industrial core through the late 20th century (Italy, Finland) show strong energy-wage coupling. Countries that deindustrialised and financialised earlier (US, UK) show no meaningful relationship at all.** The statistics are not just numbers — they are the quantitative signature of four distinct paths through the postwar economic era.
+Taken together, these four results suggest that the energy-wage relationship is not a universal feature of industrial economies. It appears to be a **contingent historical outcome** — present when certain institutional conditions hold, absent when those conditions are altered. Italy and Finland retained those conditions through the period studied. The US and UK did not.
+
+The statistics are precise about the *what*. The *why* remains an open and genuinely fascinating question that the data can point toward but not resolve — and that is precisely where the next section of this project picks up.
+
+> ⚠️ *Correlation does not imply causation. Both wages and energy consumption may be jointly driven by broader economic development, technological change, and structural factors not captured in this model.*
 
 > **Next:** [Part 3 — Power BI Dashboard](../3-PowerBI-section/README.md)
