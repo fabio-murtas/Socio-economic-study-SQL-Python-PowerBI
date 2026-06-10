@@ -199,6 +199,10 @@ The OLS slope of **6.74** is paradoxically the highest in the entire dataset —
 
 What makes the UK null result particularly notable is that it holds even though the UK and Italy are similar in population, geographic scale, and European context. They were both postwar industrial economies that rebuilt through the 1950s and 60s. The fact that Italy returns **r = 0.897** and the UK returns **r = 0.231** for the same variable pair, over an overlapping time period, is one of the sharpest comparative findings in the entire analysis. Something happened in one country that did not happen in the other, restructuring the statistical relationship between energy consumption and worker compensation completely.
 
+The UK's energy profile is inseparable from the political turmoil of the 1970s–1980s. While this analysis focuses on the data rather than policy history, the timing of energy consumption shifts maps directly onto pivotal political events. Energy consumption reached its absolute peak around 1973, coinciding with the oil crisis and the three-day working week. A sharp decline followed, partially recovering before collapsing again circa 1984, marking the miners' strike and subsequent pit closures. From that point onward, energy consumption entered a sustained secular decline—a pattern that reflects the structural deindustrialization of the British economy.
+
+Wage data presents a temporal gap between the 1960s–70s observations and the 1990s–2000s figures. This gap reflects both data availability constraints in the source dataset and a genuine structural rupture in UK labour markets: the transition from the pre-Thatcher industrial economy to the post-Thatcher service-oriented one. Treating these as continuous time series obscures the fact that they represent analytically distinct systems.
+
 ---
 
 ### Key Takeaway
