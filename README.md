@@ -2,6 +2,8 @@
 
 *From raw data to interactive dashboard, across four decades and six countries.*
 
+![](1-SQL-section/assets/data-workflow.png)
+
 ---
 
 ## What is this project?
