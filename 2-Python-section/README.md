@@ -214,8 +214,4 @@ Energy Efficiency: Post-industrial economies use energy more efficiently per uni
 Offshoring: Manufacturing-heavy economies like Italy and Finland still captured industrial energy in their borders. The US and UK outsourced production to China. Their energy is "hidden" in imports.
 Sector Mix: Italy's strong manufacturing = more direct energy. UK/US financial services = less direct energy per unit output. This confounds the wage relationship.
 
-The statistics are precise about the *what*. The *why* remains an open and genuinely fascinating question that the data can point toward but not resolve — and that is precisely where the next section of this project picks up.
-
-> ⚠️ *Correlation does not imply causation. Both wages and energy consumption may be jointly driven by broader economic development, technological change, and structural factors not captured in this model.*
-
 > **Next:** [Part 3 — Power BI Dashboard](../3-PowerBI-section/README.md)

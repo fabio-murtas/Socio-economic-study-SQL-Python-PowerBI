@@ -227,9 +227,3 @@ The three panels are not three separate questions. They are three views of the s
 > ⚠️ *Cross-country comparisons are subject to data coverage variation across sources and time periods. Differences in wage measurement methodology between countries should be considered when interpreting absolute values.*
 
 What began as a data engineering exercise in Part 1 ends here as a set of historically grounded observations about how economic development, worker compensation, and energy use have evolved across six very different national trajectories.
-
----
-
-> 🌐 **Live interactive dashboard:** [View on Power BI Service](#) *(link to be added on publish)*
-
----
