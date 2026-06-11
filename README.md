@@ -76,6 +76,3 @@ I'm Fabio, a biologist transitioning into data analysis. This project was built 
 
 → [Start with Part 1 — SQL](1-SQL-section/README.md)
 
----
-
-> 🚧 **Work in Progress** — The Python and Power BI sections are actively being developed.
